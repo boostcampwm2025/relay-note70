@@ -213,8 +213,9 @@ module.exports = {LinkedList, Node};
 내가 함수형으로 만들어본거야
 </details>
 
+
 <details>
-<summary>AI답변</summary>
+<summary>AI답변 </summary>
 ```js
   // 노드 클래스: 불변성을 유지하기 위해 생성 후 동결
 class Node {

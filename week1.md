@@ -104,6 +104,7 @@
 # Week1 수행 결과 
 ### J273_최준환: `AI에게 코드 주석 요청하기`
 <details><summary>작성한 프롬프트🔻</summary>
+  ```js
   class Node {
   constructor(value,next=null) {
     this.value = value;
@@ -205,11 +206,12 @@ class LinkedList {
 
 
 module.exports = {LinkedList, Node};
-
+```js
 위의 LinkedList에 대해서 주석을 달아주겠어?
 내가 함수형으로 만들어본거야
 </details>
-<detail><summary>AI답변</summary>
+<summary>AI답변</summary>
+```js
   // 노드 클래스: 불변성을 유지하기 위해 생성 후 동결
 class Node {
   constructor(value, next = null) {
@@ -324,7 +326,8 @@ class LinkedList {
 }
 
 module.exports = { LinkedList, Node };
-
+```
+<detail>
 </detail>
 ### J298_황은배: `gist 문서 정리에 AI 활용하기 - 리드미`
 ### S034_제민우: `학습 목표를 달성하기 위한 세분화 요청하기`  

@@ -207,7 +207,8 @@ class LinkedList {
 
 
 module.exports = {LinkedList, Node};
-```js
+
+```
 
 위의 LinkedList에 대해서 주석을 달아주겠어?
 내가 함수형으로 만들어본거야

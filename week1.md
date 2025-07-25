@@ -210,6 +210,8 @@ module.exports = {LinkedList, Node};
 위의 LinkedList에 대해서 주석을 달아주겠어?
 내가 함수형으로 만들어본거야
 </details>
+
+<details>
 <summary>AI답변</summary>
 ```js
   // 노드 클래스: 불변성을 유지하기 위해 생성 후 동결
@@ -327,8 +329,8 @@ class LinkedList {
 
 module.exports = { LinkedList, Node };
 ```
-<detail>
-</detail>
+
+</details>
 ### J298_황은배: `gist 문서 정리에 AI 활용하기 - 리드미`
 ### S034_제민우: `학습 목표를 달성하기 위한 세분화 요청하기`  
 후기: 명확한 학습 가이드라인이 생긴 덕에 이론 학습에 너무 치우치지 않을 수 있었습니다!  

@@ -103,6 +103,229 @@
 
 # Week1 수행 결과 
 ### J273_최준환: `AI에게 코드 주석 요청하기`
+<details><summary>작성한 프롬프트🔻</summary>
+  class Node {
+  constructor(value,next=null) {
+    this.value = value;
+    this.next = next;
+    Object.freeze(this);
+  }
+}
+
+class LinkedList {
+    constructor(node = null) {
+        this.head = node;
+        Object.freeze(this);
+    }
+    append(value){
+        //일단 값이 들어오면 무조건 새 노드 생성 - 불변성
+        const newNode = new Node(value);
+        //head가 없으면 새 노드를 head로하는 list 생성
+        if(!this.head) {
+            return new LinkedList(newNode);
+        }
+        //head가 있으면 마지막 노드에 새 노드를 연결
+        const copeNode = (current)=>{
+            if(!current.next) {//다음 노드가 비어 있다면 마지막 노드를 찾았다.
+                return new Node(current.value, newNode);
+            }
+           return new Node(current.value, copeNode(current.next));//그 후 재귀적으로 뒤에서 부터 노드를 이어 붙인다.
+        };
+        return new LinkedList(copeNode(this.head));//마지막으로 새로 만들어진 LinkedList 반환
+        
+    }
+
+    insert(index,value){
+        
+        if(index ===0) {
+            const newNode = new Node(value,this.head);
+            return new LinkedList(newNode);
+        }
+
+        const makenode_insert = (current, i)=> {//current는 node이다.
+            if(i<0){
+                throw Error("Invalid index");
+            }
+            if((!current&&i>0)){
+                throw Error("Index out of bounds");
+            }
+            if(i==1){
+                return new Node(current.value,new Node(value,current.next));
+            }
+            return new Node(current.value,makenode_insert(current.next,i-1));
+        };
+        return new LinkedList(makenode_insert(this.head,index));
+    }
+
+
+    remove(index){
+        if(index===0){
+            if (!this.head) throw new Error("Index out of bounds");// 놓쳤던 부분이다. 0인 경우도 비어있을 수 있다...
+            return new LinkedList(this.head.next);
+        }
+        const makenode_remove = (current,index) =>{
+            if(index<0){
+                throw Error("Invalid index");
+            }
+            if(index>0&&!current){
+                throw Error("Index out of bounds");
+            }
+            if(index ===1){
+                return new Node(current.value,current.next.next)//remove는 기존에 존재하던 node를 쓸 수 있다.
+            }
+            return new Node(current.value,makenode_remove(current.next,index-1));
+        };
+        return new LinkedList(makenode_remove(this.head,index));
+    }
+
+    item(index){
+        if(index<0){
+            throw Error("Invalid index");
+        }
+        
+        const getNode = (node,index)=>{
+            if(!node){
+                throw Error("Index out of bounds");
+            }
+            if(index===0){
+                return node.value;
+            }
+            return getNode(node.next,index-1);
+        };
+        return getNode(this.head,index);
+
+    }
+
+    clear(){
+        return new LinkedList();
+    }
+}
+
+
+
+
+module.exports = {LinkedList, Node};
+
+위의 LinkedList에 대해서 주석을 달아주겠어?
+내가 함수형으로 만들어본거야
+</details>
+<detail><summary>AI답변</summary>
+  // 노드 클래스: 불변성을 유지하기 위해 생성 후 동결
+class Node {
+  constructor(value, next = null) {
+    this.value = value;  // 현재 노드의 값
+    this.next = next;    // 다음 노드를 가리키는 참조
+    Object.freeze(this); // 불변성 보장
+  }
+}
+
+// 연결 리스트 클래스
+class LinkedList {
+  constructor(node = null) {
+    this.head = node;     // 리스트의 시작 노드 (head)
+    Object.freeze(this);  // 불변성 보장
+  }
+
+  // 값을 리스트 끝에 추가 (새 리스트 반환)
+  append(value) {
+    const newNode = new Node(value);  // 새 노드 생성
+
+    if (!this.head) {
+      // 빈 리스트인 경우 새 노드만 포함한 리스트 반환
+      return new LinkedList(newNode);
+    }
+
+    // 기존 노드를 재귀적으로 복사하며 새로운 노드를 끝에 연결
+    const copeNode = (current) => {
+      if (!current.next) {
+        return new Node(current.value, newNode);  // 마지막 노드 뒤에 새 노드 연결
+      }
+      return new Node(current.value, copeNode(current.next)); // 나머지 노드는 그대로 복사
+    };
+
+    return new LinkedList(copeNode(this.head)); // 새로운 리스트 반환
+  }
+
+  // 특정 위치에 값을 삽입 (새 리스트 반환)
+  insert(index, value) {
+    if (index === 0) {
+      // 0번째 위치 삽입: 새 노드를 head로 설정
+      const newNode = new Node(value, this.head);
+      return new LinkedList(newNode);
+    }
+
+    // 재귀적으로 기존 노드를 복사하며 삽입 위치를 찾아 새로운 노드 연결
+    const makenode_insert = (current, i) => {
+      if (i < 0) {
+        throw Error("Invalid index");
+      }
+      if (!current && i > 0) {
+        throw Error("Index out of bounds");
+      }
+      if (i == 1) {
+        // 다음 위치에 새 노드를 삽입
+        return new Node(current.value, new Node(value, current.next));
+      }
+      return new Node(current.value, makenode_insert(current.next, i - 1));
+    };
+
+    return new LinkedList(makenode_insert(this.head, index));
+  }
+
+  // 특정 위치의 노드를 제거 (새 리스트 반환)
+  remove(index) {
+    if (index === 0) {
+      if (!this.head) throw new Error("Index out of bounds");
+      // head 제거: head의 다음 노드를 새로운 head로 설정
+      return new LinkedList(this.head.next);
+    }
+
+    // 재귀적으로 기존 노드를 복사하며 제거할 위치를 건너뜀
+    const makenode_remove = (current, index) => {
+      if (index < 0) {
+        throw Error("Invalid index");
+      }
+      if (index > 0 && !current) {
+        throw Error("Index out of bounds");
+      }
+      if (index === 1) {
+        // 다음 노드를 건너뛰어 연결 (삭제 효과)
+        return new Node(current.value, current.next.next);
+      }
+      return new Node(current.value, makenode_remove(current.next, index - 1));
+    };
+
+    return new LinkedList(makenode_remove(this.head, index));
+  }
+
+  // 특정 인덱스의 값을 조회 (값만 반환)
+  item(index) {
+    if (index < 0) {
+      throw Error("Invalid index");
+    }
+
+    const getNode = (node, index) => {
+      if (!node) {
+        throw Error("Index out of bounds");
+      }
+      if (index === 0) {
+        return node.value;
+      }
+      return getNode(node.next, index - 1);
+    };
+
+    return getNode(this.head, index);
+  }
+
+  // 리스트 초기화 (빈 리스트 반환)
+  clear() {
+    return new LinkedList(); // head가 null인 새 리스트 반환
+  }
+}
+
+module.exports = { LinkedList, Node };
+
+</detail>
 ### J298_황은배: `gist 문서 정리에 AI 활용하기 - 리드미`
 ### S034_제민우: `학습 목표를 달성하기 위한 세분화 요청하기`  
 후기: 명확한 학습 가이드라인이 생긴 덕에 이론 학습에 너무 치우치지 않을 수 있었습니다!  

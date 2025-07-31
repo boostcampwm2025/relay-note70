@@ -65,10 +65,9 @@
 <div markdown="1">
 
 > 피어피드백에서 이야기 나눌 주제 추천해줘!
-
-<img width="732" height="478" alt="image (8)" src="https://gist.github.com/user-attachments/assets/fe399172-57e4-4a8f-b521-fd3dd3e1ee97" />
-<img width="721" height="427" alt="image (9)" src="https://gist.github.com/user-attachments/assets/92a61c9f-c9e3-4ecc-97d2-f2db37fd2e5a" />
-<img width="738" height="517" alt="image (10)" src="https://gist.github.com/user-attachments/assets/2c91f638-2590-4368-affa-0a19042425bf" />
+<img width="732" height="478" alt="image (8)" src="https://github.com/user-attachments/assets/bae2f063-8b11-4eb5-87bb-234c246988ea" />
+<img width="721" height="427" alt="image (9)" src="https://github.com/user-attachments/assets/9a7aaac6-8329-4e1c-a87a-5cdcbfc80686" />
+<img width="738" height="517" alt="image (10)" src="https://github.com/user-attachments/assets/cfc1ba20-a3b5-49fd-8bef-ad3addc1ab98" />
 
 
 day13의 Git 호환관리 미션은 크게 두가지 방법으로 접근할 수 있었다.

@@ -22,8 +22,10 @@ AI를 활용해 문서의 가독성을 높이고, 피드백을 바탕으로 이�
 
 ## 2. 생성형 AI + Mermaid로 다이어그램 생성
 
+[참고할 AI 피어 세션](https://lucas.codesquad.kr/boostcamp-2025/digest/u/be519e3cb38b87386c5c1f724b41f25f:3bda3106f16ab48b9552b8abea9cd4a7)
+
 **배경**  
-다이어그램 제작이 필요한 과제에서, 다이어그램 툴에 익숙하지 않은 동료들의 부담을 줄이기 위해 생성형 AI와 Mermaid를 활용한다.
+다이어그램 제작이 필요한 과제에서, 다이어그램 툴에 익숙하지 않은 동료들의 부담을 줄이기 위해 생성형 AI와 [Mermaid](https://mermaid.js.org/)를 활용한다.
 
 **수행 방법**
 
@@ -54,6 +56,8 @@ AI 활용 학습 과정에서 얻은 좋은 프롬프트와 결과를 팀원과 
 ---
 
 ## 4. AI에게 코드 관련 질문 생성 받기
+
+[참고할 AI 피어 세션](https://lucas.codesquad.kr/boostcamp-2025/digest/u/4dcc8f92951bf9932aaa4198f166e4ed:c52e710bf74a036f23644fbf428bf6fd)
 
 **배경**  
 3주차 미션부터는 2일차에 개선하기 미션이 추가된다.  
